@@ -1,39 +1,39 @@
-var media = require('./hostRepository');
-var service = {};
+var hostService = require('./hostService');
+var self = {};
 
-service.addHost = async (host) => {
+self.addHost = async (host) => {
     try {
-        return await media.addHost(host);
+        return await hostService.addHost(host);
     } catch (err) {
         throw err;
     }
 };
 
-service.deleteHost = async (key) => {
+self.deleteHost = async (key) => {
     try {
-        return await media.deleteHost(key);
+        return await hostService.deleteHost(key);
     } catch (err) {
         throw err;
     }
 };
 
-service.getHosts = async () => {
+self.getHosts = async () => {
     try {
-        return await media.getHosts();
+        return await hostService.getHosts();
     } catch (err) {
         throw err;
     }
 };
 
-service.findHost = async (key) => {
+self.findHost = async (key) => {
     try {
-        return await media.findHost(key);
+        return await hostService.findHost(key);
     } catch (err) {
         throw err;
     }
 };
 
-service.monitorHosts = () => {
+self.monitorHosts = () => {
 
 }
 
@@ -42,4 +42,4 @@ service.monitorHosts = () => {
 //     console.log(i++);
 // },1000);
 
-module.exports = service;
+module.exports = self;
