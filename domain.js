@@ -1,46 +1,36 @@
 var media = require('./hostRepository');
 var service = {};
 
-service.addHost = (host) => {
-    return new Promise(
-        (resolve, reject) => {
-            media.addHost(host).then((result) => {
-                resolve(result);
-            }, (err) => {
-                reject(err);
-            });
-        }
-    );
+service.addHost = async (host) => {
+    try {
+        return await media.addHost(host);
+    } catch (err) {
+        throw err;
+    }
 };
 
-service.deleteHost = (key) => {
-    return new Promise((resolve, reject) => {
-        media.deleteHost(key).then((result) => {
-            resolve(result);
-        }, (err) => {
-            reject(err);
-        });
-    });
+service.deleteHost = async (key) => {
+    try {
+        return await media.deleteHost(key);
+    } catch (err) {
+        throw err;
+    }
 };
 
-service.getHosts = () => {
-    return new Promise((resolve, reject) => {
-        media.getHosts().then((result) => {
-            resolve(result);
-        }, (err) => {
-            reject(err);
-        });
-    });
+service.getHosts = async () => {
+    try {
+        return await media.getHosts();
+    } catch (err) {
+        throw err;
+    }
 };
 
-service.findHost = (key) => {
-    return new Promise((resolve, reject) => {
-        media.findHost(key).then((result) => {
-            resolve(result);
-        }, (err) => {
-            reject(err);
-        });
-    });
+service.findHost = async (key) => {
+    try {
+        return await media.findHost(key);
+    } catch (err) {
+        throw err;
+    }
 };
 
 service.monitorHosts = () => {
