@@ -9,6 +9,14 @@ self.addHost = async (host) => {
     }
 };
 
+self.updateHost = async (host) => {
+    try {
+        return await hostService.updateHost(host);
+    } catch (err) {
+        throw err;
+    }
+};
+
 self.deleteHost = async (key) => {
     try {
         return await hostService.deleteHost(key);

@@ -8,6 +8,18 @@ var monitor = require('./monitorService');
 //     console.log(err);
 // });
 
+model.updateHost({
+    id: '5ab917f34789e82a5ceb53d8',
+    name: "google.com"
+}).then(
+    (result) => {
+        console.log(result);
+    },
+    (err) => {
+        console.log(err);
+    }
+);
+
 // model.deleteHost('5ab8f4db01bc6132c8622769').then(
 //     (result) => {
 //         console.log(result);
