@@ -19,6 +19,7 @@
   "dependencies": {
     "mongoose": "^5.0.11",
     "mongoose-unique-validator": "^2.0.0",
-    "node-nmap": "^4.0.0"
+    "node-nmap": "^4.0.0",
+    "util": "^0.10.3"
   }
 }
