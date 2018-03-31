@@ -27,8 +27,9 @@ self.deleteHost = async (key) => {
 
 self.updateHost = async (host) => {
     try {
-        await HostSchema.findByIdAndUpdate(host.id,host).exec();
-        return `update ${host.key} successfully`;
+        return new Host(await HostSchema.findByIdAndUpdate(host.id, host, {
+            new: true
+        }).exec());
     } catch (err) {
         throw err;
     }
