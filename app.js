@@ -1,5 +1,5 @@
 var model = require('./domain');
-
+var monitor = require('./monitorService');
 // model.addHost({
 //     name: 'google.com'
 // }).then((result) => {
@@ -56,4 +56,12 @@ var model = require('./domain');
 //     }
 // });
 
-// console.log(contact);
+// monitor.queryHost({
+//     name: 'google.com'
+// }).then(
+//     (result) => {
+//         console.log(result);
+//     }, (err) => {
+//         console.log(err);
+//     }
+// );
