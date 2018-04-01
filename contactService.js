@@ -10,7 +10,6 @@ self.addContact = async (contact) => {
     try {
         return new Contact(await ContactSchema.create({
             name: contact.name,
-            email:contact.email,
             address:contact.address
         }));
     } catch (err) {

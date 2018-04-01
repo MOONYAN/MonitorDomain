@@ -2,8 +2,8 @@ var contactService = require('../contactService');
 
 contactService.addContact({
     name: 'Trump',
-    email: 'Trump@gmail.com',
     address: {
+        Email:'Trump@gmail.com',
         Line: 'TrumpLineid',
         FB: 'TrumpFB',
         Phone: '0806449'
@@ -16,8 +16,8 @@ contactService.addContact({
 
 contactService.addContact({
     name: 'Obama',
-    email: 'Obama@gmail.com',
     address: {
+        Email: 'Obama@gmail.com',
         Line: 'ObamaLineid',
         FB: 'ObamaFB',
         Phone: '0806449'

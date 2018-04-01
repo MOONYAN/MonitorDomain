@@ -8,19 +8,17 @@ var contactSchema = new Schema({
         required: true,
         unique: true
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
     address: {
+        Email: {
+            type: String
+        },
         Line: {
             type: String
         },
         FB: {
             type: String
         },
-        Phone:{
+        Phone: {
             type: String
         }
     }
