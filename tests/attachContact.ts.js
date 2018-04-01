@@ -2,11 +2,11 @@ var hostService = require('../hostService');
 const util = require('util');
 
 var host = {
-    id: '5abf7e6e1b3eb53bcc4bfa69'
+    id: '5ac0a299fdd49919e0c9c371'
 };
 
 var contact = {
-    id: '5abf528920a6fb5864dc67b0'
+    id: '5ac0a18e5bfe26539474d864'
 };
 
 hostService.attachContact(host, contact).then((newHost) => {

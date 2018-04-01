@@ -2,7 +2,7 @@ var hostService = require('../hostService');
 const util = require('util');
 
 var host = {
-    id: '5abf7e6e1b3eb53bcc4bfa69',
+    id: '5ac0a299fdd49919e0c9c371',
     ip: '127.0.0.1',
     status:'Unknown'
 };
