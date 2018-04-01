@@ -1,4 +1,7 @@
 var hostService = require('./hostService');
+var monitor = require('./monitor');
+var messageBus = require('./messageBus');
+var timer = require('./timer');
 var self = {};
 
 self.getHosts = async () => {
@@ -17,13 +20,11 @@ self.findHost = async (key) => {
     }
 };
 
-self.monitorHosts = () => {
-
-}
-
-// var i=0;
-// setInterval(()=>{    
-//     console.log(i++);
-// },1000);
+messageBus.subscribe((event)=>{
+    if (event.eventType == 'onTimeoutEvent') {
+        console.log(event);
+        monitor.inspectHosts();
+    }
+});
 
 module.exports = self;
