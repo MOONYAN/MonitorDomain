@@ -1,5 +1,7 @@
 var monitorService = require('./monitorService');
 var hostService = require('./hostService');
+var MessageBus = require('./messageBus');
+var OnStatusChangeEvent = require('./onStatusChangeEvent');
 var self = {};
 
 self.inspectHosts = async () => {
@@ -21,6 +23,7 @@ self.verify = async (host, data) => {
             host.ip = data.ip;
             let newHost = await hostService.updateHostStatus(host);
             console.log(newHost);
+            MessageBus.brocast(new OnStatusChangeEvent(newHost));
             return 'onVerify';
         }
     } catch (err) {
