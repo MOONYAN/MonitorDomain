@@ -1,34 +1,18 @@
 var model = require('./domain');
+var util = require('util');
 
-// model.addHost({
-//     name: 'google.com'
-// }).then((result) => {
-//     console.log(result);
-// }, (err) => {
-//     console.log(err);
-// });
-
-// model.deleteHost(1).then(
-//     (result) => {
-//         console.log(result);
-//     },
-//     (err) => {
-//         console.log(err);
-//     }
-// );
-
-// model.getHosts().then(
-//     (result) => {
-//         console.log(result);
-//     },
-//     (err) => {
-//         console.log(err);
-//     }
-// );
-
-model.findHost(1).then(
+model.getHosts().then(
     (result) => {
-        console.log(result);
+        console.log(util.inspect(result, false, null));
+    },
+    (err) => {
+        console.log(err);
+    }
+);
+
+model.findHost('5abf7e6e1b3eb53bcc4bfa69').then(
+    (result) => {
+        console.log(util.inspect(result, false, null));
     },
     (err) => {
         console.log(err);

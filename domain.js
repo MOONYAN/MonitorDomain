@@ -1,45 +1,31 @@
-var media = require('./hostRepository');
-var service = {};
+var hostService = require('./hostService');
+var monitor = require('./monitor');
+var messageBus = require('./messageBus');
+var hostEventHandler = require('./hostEventHandler');
+var timer = require('./timer');
+var self = {};
 
-service.addHost = async (host) => {
+self.getHosts = async () => {
     try {
-        return await media.addHost(host);
+        return await hostService.getHosts();
     } catch (err) {
         throw err;
     }
 };
 
-service.deleteHost = async (key) => {
+self.findHost = async (key) => {
     try {
-        return await media.deleteHost(key);
+        return await hostService.findHost(key);
     } catch (err) {
         throw err;
     }
 };
 
-service.getHosts = async () => {
-    try {
-        return await media.getHosts();
-    } catch (err) {
-        throw err;
+messageBus.subscribe((event)=>{
+    if (event.eventType == 'onTimeoutEvent') {
+        console.log(event);
+        monitor.inspectHosts();
     }
-};
+});
 
-service.findHost = async (key) => {
-    try {
-        return await media.findHost(key);
-    } catch (err) {
-        throw err;
-    }
-};
-
-service.monitorHosts = () => {
-
-}
-
-// var i=0;
-// setInterval(()=>{    
-//     console.log(i++);
-// },1000);
-
-module.exports = service;
+module.exports = self;
