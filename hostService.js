@@ -28,6 +28,21 @@ self.deleteHost = async (key) => {
     }
 };
 
+self.updateHostStatus = async (host) => {
+    try {
+        return new Host(await HostSchema.findByIdAndUpdate(host.id, {
+            '$set': {
+                'ip':host.ip,
+                'status':host.status
+            }
+        }, {
+            new: true
+        }).populate('contacts').exec());
+    } catch (err) {
+        throw err;
+    }
+}
+
 self.attachContact = async (host, contact) => {
     try {
         return new Host(await HostSchema.findByIdAndUpdate(host.id, {
