@@ -23,9 +23,9 @@ self.verify = async (host, data) => {
             host.ip = data.ip;
             let newHost = await hostService.updateHostStatus(host);
             console.log(newHost);
-            MessageBus.brocast(new OnStatusChangeEvent(newHost));
-            return 'onVerify';
+            MessageBus.brocast(new OnStatusChangeEvent(newHost));            
         }
+        return 'onVerify';
     } catch (err) {
         throw err;
     }
