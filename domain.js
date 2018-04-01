@@ -1,6 +1,7 @@
 var hostService = require('./hostService');
 var monitor = require('./monitor');
 var messageBus = require('./messageBus');
+var hostEventHandler = require('./hostEventHandler');
 var timer = require('./timer');
 var self = {};
 
