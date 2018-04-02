@@ -1,34 +1,20 @@
 'use strict';
 
-var nmap = require('node-nmap');
+var servie = {};
+servie['nmap'] = require('./nmapService');
+servie['ping'] = require('./pingService');
 
 class MonitorService {
-    queryHost(host) {
-        return new Promise((resolve, reject) => {
-            let address = host.name;
-            if (typeof address != 'string') {
-                reject('address is not a string type');
+    async queryHost(host) {
+        try {
+            if (host.command && servie[host.command]) {
+                return servie[host.command].queryHost(host);
             }
-
-            //    Accepts array or comma separated string of NMAP acceptable hosts 
-            let quickscan = new nmap.QuickScan(address);
-
-            quickscan.on('complete', function (data) {
-                resolve({
-                    name: (data.length == 0) ? "" : data[0].hostname,
-                    ip: (data.length == 0) ? "" : data[0].ip,
-                    status: (data.length == 1) ? "UP" : "DOWN"
-                });
-            });
-
-            quickscan.on('error', function (error) {
-                resolve({
-                    status: 'UNKNOWN'
-                });
-            });
-            quickscan.startScan();
-        });
-    };
+            return 'unvalid command';
+        } catch (err) {
+            throw err;
+        }
+    }
 }
 
 module.exports = new MonitorService();
