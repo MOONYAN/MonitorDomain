@@ -1,13 +1,16 @@
 'use strict';
-var nmapService = require('./nmapService');
-var pingService = require('./pingService');
 
-// var nmap = require('node-nmap');
+var servie = {};
+servie['nmap'] = require('./nmapService');
+servie['ping'] = require('./pingService');
 
 class MonitorService {
     async queryHost(host) {
         try {
-            return await nmapService.queryHost(host);
+            if (host.command && servie[host.command]) {
+                return servie[host.command].queryHost(host);
+            }
+            return 'unvalid command';
         } catch (err) {
             throw err;
         }
