@@ -1,27 +1,21 @@
 {
   "name": "monitordomain",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MOONYAN/MonitorDomain.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MOONYAN/MonitorDomain/issues"
-  },
-  "homepage": "https://github.com/MOONYAN/MonitorDomain#readme",
   "dependencies": {
     "mongoose": "^5.0.11",
     "mongoose-unique-validator": "^2.0.0",
     "node-nmap": "^4.0.0",
     "ping": "^0.2.2",
     "time-stamp": "^2.0.0",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "morgan": "~1.9.0"
   }
 }
