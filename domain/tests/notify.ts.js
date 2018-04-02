@@ -1,4 +1,4 @@
-var notifyService = require('../notifyService');
+var notifyService = require('../services/notifyService');
 
 let contact = {
     address: {

@@ -1,4 +1,4 @@
-var hostService = require('../hostService');
+var hostService = require('../services/hostService');
 
 hostService.addHost({
     name: 'youtube.com',

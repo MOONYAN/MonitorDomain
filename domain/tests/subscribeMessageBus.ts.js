@@ -1,5 +1,5 @@
 var messageBus = require('../messageBus');
-var OnStatusChangeEvent = require('../onStatusChangeEvent');
+var OnStatusChangeEvent = require('../events/onStatusChangeEvent');
 var util = require('util');
 
 messageBus.subscribe((event) => {

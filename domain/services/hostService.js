@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var connection = mongoose.connect('mongodb://Sasuke:9487@ds033126.mlab.com:33126/narutomongo');
 
-var HostSchema = require('./Schemas/hostSchema');
-var ContactSchema = require('./Schemas/contactSchema');
-var Host = require('./host');
+var HostSchema = require('../Schemas/hostSchema');
+var ContactSchema = require('../Schemas/contactSchema');
+var Host = require('../host');
 
 var self = {};
 

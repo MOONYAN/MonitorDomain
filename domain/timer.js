@@ -1,5 +1,5 @@
 var messageBus = require('./messageBus');
-var OnTimeoutEvent = require('./onTimeoutEvent')
+var OnTimeoutEvent = require('./events/onTimeoutEvent')
 
 setInterval(_ => {
     messageBus.brocast(new OnTimeoutEvent());

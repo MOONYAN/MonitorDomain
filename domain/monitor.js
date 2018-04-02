@@ -1,7 +1,7 @@
-var monitorService = require('./monitorService');
-var hostService = require('./hostService');
+var monitorService = require('./services/monitorService');
+var hostService = require('./services/hostService');
 var MessageBus = require('./messageBus');
-var OnStatusChangeEvent = require('./onStatusChangeEvent');
+var OnStatusChangeEvent = require('./events/onStatusChangeEvent');
 var self = {};
 
 self.inspectHosts = async () => {

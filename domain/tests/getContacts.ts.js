@@ -1,4 +1,4 @@
-var contactService = require('../contactService');
+var contactService = require('../services/contactService');
 
 
 contactService.getContacts().then((result) => {

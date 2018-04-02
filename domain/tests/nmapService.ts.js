@@ -1,6 +1,6 @@
-var pingService = require('../pingService');
+var nmapService = require('../services/nmapService');
 
-pingService.queryHost({
+nmapService.queryHost({
     name: 'google.com'
 }).then((result) => {
     console.log(result);
