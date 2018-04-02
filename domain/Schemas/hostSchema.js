@@ -8,6 +8,10 @@ var hostSchema = new Schema({
         required: true,
         unique: true
     },
+    command:{
+        type: String,
+        required: true,
+    },
     ip: {
         type: String
     },

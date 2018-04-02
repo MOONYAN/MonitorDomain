@@ -2,7 +2,7 @@
 
 var nmap = require('node-nmap');
 
-class MonitorService {
+class NmapService {
     queryHost(host) {
         return new Promise((resolve, reject) => {
             let address = host.name;
@@ -31,4 +31,4 @@ class MonitorService {
     };
 }
 
-module.exports = new MonitorService();
+module.exports = new NmapService();

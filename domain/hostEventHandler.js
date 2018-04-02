@@ -1,5 +1,5 @@
 var messageBus = require('./messageBus');
-var notifyService = require('./notifyService');
+var notifyService = require('./services/notifyService');
 
 messageBus.subscribe((event) => {
     if (event.eventType == 'onStatusChangeEvent') {

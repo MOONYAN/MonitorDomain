@@ -1,4 +1,4 @@
-var hostService = require('../hostService');
+var hostService = require('../services/hostService');
 const util = require('util');
 
 hostService.getHosts().then((hsots) => {

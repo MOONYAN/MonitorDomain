@@ -1,7 +1,8 @@
-var hostService = require('../hostService');
+var hostService = require('../services/hostService');
 
 hostService.addHost({
-    name: 'google.com'
+    name: 'youtube.com',
+    command: 'nmap'
 }).then((result) => {
     console.log(result);
 }, (err) => {

@@ -1,5 +1,5 @@
 var monitor = require('../monitor');
-var monitorService = require('../monitorService');
+var monitorService = require('../services/monitorService');
 var hostEventHandler = require('../hostEventHandler');
 
 monitor.inspectHosts().then((result) => {
@@ -9,7 +9,8 @@ monitor.inspectHosts().then((result) => {
 });
 
 monitorService.queryHost({
-    name: 'google.com'
+    name: 'google.com',
+    command:'nmap'
 }).then((result) => {
     console.log(result);
 }, (err) => {
