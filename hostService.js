@@ -11,6 +11,7 @@ self.addHost = async (host) => {
     try {
         return new Host(await HostSchema.create({
             name: host.name,
+            command: host.command,
             ip: host.ip,
             status: host.status
         }));
