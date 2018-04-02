@@ -21,7 +21,15 @@ self.findHost = async (key) => {
     }
 };
 
-messageBus.subscribe((event)=>{
+self.updateHostCommand = async (host) => {
+    try {
+        return await hostService.updateHostCommand(host);
+    } catch (err) {
+        throw err;
+    }
+};
+
+messageBus.subscribe((event) => {
     if (event.eventType == 'onTimeoutEvent') {
         console.log(event);
         monitor.inspectHosts();
