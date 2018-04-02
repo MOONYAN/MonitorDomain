@@ -2,14 +2,11 @@ var hostService = require('../hostService');
 const util = require('util');
 
 var host = {
-    id: '5ac1bd0a623d624d1c5b89f6'
+    id: '5ac1bd0a623d624d1c5b89f6',
+    command:'ping'
 };
 
-var contact = {
-    id: '5ac1bd89d48f9347a0d3abc5'
-};
-
-hostService.attachContact(host, contact).then((newHost) => {
+hostService.updateHostCommand(host).then((newHost) => {
     console.log(util.inspect(newHost, false, null));
 }, (err) => {
     console.log(err);

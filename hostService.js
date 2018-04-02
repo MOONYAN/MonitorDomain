@@ -20,10 +20,15 @@ self.addHost = async (host) => {
     }
 };
 
-self.deleteHost = async (key) => {
+self.updateHostCommand = async (host) => {
     try {
-        await HostSchema.findByIdAndRemove(key).exec();
-        return `delete ${key} successfully`;
+        return new Host(await HostSchema.findByIdAndUpdate(host.id, {
+            '$set': {
+                'command': host.command
+            }
+        }, {
+            new: true
+        }).populate('contacts').exec());
     } catch (err) {
         throw err;
     }
@@ -33,8 +38,8 @@ self.updateHostStatus = async (host) => {
     try {
         return new Host(await HostSchema.findByIdAndUpdate(host.id, {
             '$set': {
-                'ip':host.ip,
-                'status':host.status
+                'ip': host.ip,
+                'status': host.status
             }
         }, {
             new: true
