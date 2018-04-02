@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 
 var hosts = require('./routes/hosts');
 
+var domain = require('./domain/domain');
 var app = express();
 
 app.use(logger('dev'));
