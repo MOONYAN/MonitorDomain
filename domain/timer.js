@@ -1,8 +1,17 @@
-var messageBus = require('./messageBus');
-var OnTimeoutEvent = require('./events/onTimeoutEvent')
+module.exports = class Timer {
 
-setInterval(_ => {
-    messageBus.brocast(new OnTimeoutEvent());
-}, 3000);
+    constructor(eventEmitter) {
+        this.eventEmitter = eventEmitter;
+        this.intervalRef = null;
+    }
 
-module.exports = this;
+    start(interval) {
+        this.intervalRef = setInterval(_ => {
+            this.eventEmitter.emit('timeout');
+        }, interval);
+    }
+
+    stop() {
+        clearInterval(this.intervalRef);
+    }
+}

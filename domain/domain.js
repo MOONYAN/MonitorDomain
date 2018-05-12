@@ -2,23 +2,26 @@ var hostService = require('./services/hostService');
 var monitor = require('./monitor');
 var messageBus = require('./messageBus');
 var hostEventHandler = require('./hostEventHandler');
-var timer = require('./timer');
+const EventEmitter = require('./eventEmitter');
+const Timer = require('./timer');
 
-messageBus.subscribe((event) => {
-    if (event.eventType == 'onTimeoutEvent') {
-        console.log(event);
-        monitor.inspectHosts();
-    }
+let eventEmitter = new EventEmitter();
+let timer = new Timer(eventEmitter);
+timer.start(3000);
+
+eventEmitter.on('timeout', _ => {
+    monitor.inspectHosts();
 });
 
-class Domain {
+module.exports = {
+
     async getHosts() {
         try {
             return await hostService.getHosts();
         } catch (err) {
             throw err;
         }
-    }
+    },
 
     async findHost(key) {
         try {
@@ -26,7 +29,7 @@ class Domain {
         } catch (err) {
             throw err;
         }
-    }
+    },
 
     async updateHostCommand(host) {
         try {
@@ -35,6 +38,4 @@ class Domain {
             throw err;
         }
     }
-}
-
-module.exports = new Domain();
+};
