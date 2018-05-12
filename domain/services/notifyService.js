@@ -1,28 +1,16 @@
-var send = {};
+var senders = {};
 
-send['Email'] = (Email, message) => {
-    console.log(`Send Email ${Email} ->`, message);
-};
+module.exports = {
 
-send['Line'] = (Line, message) => {
-    console.log(`Send Line ${Line} ->`, message);
-};
+    use(key, sender) {
+        senders[key] = sender;
+    },
 
-send['FB'] = (FB, message) => {
-    console.log(`Send FB ${FB} ->`, message);
-};
-
-send['Phone'] = (Phone, message) => {
-    console.log(`Send Phone ${Phone} ->`, message);
-};
-
-class NotifyService {
-    notify(receiver, message) {
-        let address = receiver.address;;
+    notify({address}, message) {
         for (let key in address) {
-            send[key](address[key], message);
+            if (senders[key]) {
+                senders[key].send(address[key], message);
+            }
         }
     }
 }
-
-module.exports = new NotifyService();
