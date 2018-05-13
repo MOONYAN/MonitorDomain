@@ -1,20 +1,20 @@
 'use strict';
 
-var servie = {};
-servie['nmap'] = require('./nmapService');
-servie['ping'] = require('./pingService');
+var services = {};
 
-class MonitorService {
+module.exports = {
+    use(key, service) {
+        services[key] = service;
+    },
+
     async queryHost(host) {
         try {
-            if (host.command && servie[host.command]) {
-                return servie[host.command].queryHost(host);
+            if (host.command && services[host.command]) {
+                return await services[host.command].queryHost(host);
             }
             return 'unvalid command';
         } catch (err) {
             throw err;
         }
     }
-}
-
-module.exports = new MonitorService();
+};

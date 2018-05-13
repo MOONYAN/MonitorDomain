@@ -2,7 +2,7 @@
 
 var nmap = require('node-nmap');
 
-class NmapService {
+module.exports = {
     queryHost(host) {
         return new Promise((resolve, reject) => {
             let address = host.name;
@@ -28,7 +28,5 @@ class NmapService {
             });
             quickscan.startScan();
         });
-    };
-}
-
-module.exports = new NmapService();
+    }
+};
