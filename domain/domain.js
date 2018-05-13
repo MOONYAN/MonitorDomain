@@ -1,6 +1,6 @@
 var hostService = require('./services/hostService');
-var monitor = require('./monitor');
 var messageBus = require('./messageBus');
+const Monitor = require('./monitor');
 const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
 const Timer = require('./timer');
@@ -16,6 +16,7 @@ let hostEventHandler = new HostEventHandler(eventEmitter,notifyService);
 let timer = new Timer(eventEmitter);
 timer.start(3000);
 
+let monitor = new Monitor(eventEmitter);
 eventEmitter.on('timeout', _ => {
     monitor.inspectHosts();
 });
