@@ -1,4 +1,4 @@
-var hostService = require('./services/hostService');
+const hostService = require('./services/hostService');
 const Monitor = require('./monitor');
 const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
@@ -19,7 +19,7 @@ const monitorService = require('./services/monitorService');
 monitorService.use('nmap', require('./services/nmapService'));
 monitorService.use('ping', require('./services/nmapService'));
 
-let monitor = new Monitor(eventEmitter, monitorService);
+let monitor = new Monitor(eventEmitter, monitorService, hostService);
 eventEmitter.on('timeout', _ => {
     monitor.inspectHosts();
 });

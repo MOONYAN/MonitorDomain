@@ -1,14 +1,13 @@
-var hostService = require('./services/hostService');
-
 module.exports = class Monitor {
-    constructor(eventEmitter, monitorService) {
+    constructor(eventEmitter, monitorService, hostService) {
         this.eventEmitter = eventEmitter;
         this.monitorService = monitorService;
+        this.hostService = hostService;
     }
 
     async inspectHosts() {
         try {
-            let hosts = await hostService.getHosts();
+            let hosts = await this.hostService.getHosts();
             hosts.forEach(async element => {
                 this.verify(element, await this.monitorService.queryHost(element));
             });
@@ -23,7 +22,7 @@ module.exports = class Monitor {
             if (host.status != data.status) {
                 host.status = data.status;
                 host.ip = data.ip;
-                let newHost = await hostService.updateHostStatus(host);
+                let newHost = await this.hostService.updateHostStatus(host);
                 this.eventEmitter.emit('statusChange', newHost);
             }
             return 'onVerify';
