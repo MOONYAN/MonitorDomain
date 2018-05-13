@@ -1,5 +1,4 @@
 var hostService = require('./services/hostService');
-var messageBus = require('./messageBus');
 const Monitor = require('./monitor');
 const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
