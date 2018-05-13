@@ -10,7 +10,7 @@ module.exports = {
     async queryHost(host) {
         try {
             if (host.command && services[host.command]) {
-                return services[host.command].queryHost(host);
+                return await services[host.command].queryHost(host);
             }
             return 'unvalid command';
         } catch (err) {
