@@ -1,6 +1,6 @@
 var ping = require('ping');
 
-class PingService {
+module.exports = {
     queryHost(host) {
         return new Promise((resolve, reject) => {
             let address = host.name;
@@ -18,6 +18,4 @@ class PingService {
                 });
         });
     }
-}
-
-module.exports = new PingService();
+};
