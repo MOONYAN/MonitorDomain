@@ -62,4 +62,35 @@ describe('HostService', _ => {
             done(err);
         });
     })
+
+    it('should update host status', done => {
+        let hostService = new HostService({
+            async updateHostStatus({id,ip,status}) {
+                return {
+                    id: id,
+                    name: 'Trump',
+                    command: 'Magic',
+                    ip: ip,
+                    status: status,
+                    contact: []
+                }
+            }
+        });
+
+        hostService.updateHostStatus({
+            id:'9487',
+            ip:'0.0.0.0',
+            status: 'Yee'
+        }).then((newHost) => {
+            newHost.should.have.property('id');
+            newHost.should.have.property('name');
+            newHost.should.have.property('command');
+            newHost.should.have.property('ip').with.equal('0.0.0.0');
+            newHost.should.have.property('status').with.equal('Yee');
+            newHost.should.have.property('contact').with.lengthOf(0);
+            done();
+        }, err => {
+            done(err);
+        });
+    })
 });
