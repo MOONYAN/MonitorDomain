@@ -93,4 +93,36 @@ describe('HostService', _ => {
             done(err);
         });
     })
+
+    it('should attach contact', done => {
+        let hostService = new HostService({
+            async attachContact({id},contact) {
+                return {
+                    id: id,
+                    name: 'Trump',
+                    command: 'Magic',
+                    ip: '0.0.0.0',
+                    status: 'Yee',
+                    contacts: [contact]
+                }
+            }
+        });
+
+        hostService.attachContact({
+            id:'9487',
+            contacts:{
+                id:'007'
+            }
+        }).then((newHost) => {
+            newHost.should.have.property('id');
+            newHost.should.have.property('name');
+            newHost.should.have.property('command');
+            newHost.should.have.property('ip').with.equal('0.0.0.0');
+            newHost.should.have.property('status');
+            newHost.should.have.property('contacts').with.lengthOf(1);
+            done();
+        }, err => {
+            done(err);
+        });
+    })
 });
