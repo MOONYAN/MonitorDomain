@@ -1,8 +1,10 @@
-const hostService = require('./services/hostService');
+const HostService = require('./services/hostService');
 const Monitor = require('./monitor');
 const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
 const Timer = require('./timer');
+
+let hostService = new HostService(require('./services/mongoHostService'));
 
 const notifyService = require('./services/notifyService');
 notifyService.use('Email', require('./services/mailService'));
