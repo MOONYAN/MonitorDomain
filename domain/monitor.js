@@ -1,6 +1,6 @@
 module.exports = class Monitor {
-    constructor(eventEmitter, monitorService, hostService) {
-        this.eventEmitter = eventEmitter;
+    constructor(iEmitter, monitorService, hostService) {
+        this.iEmitter = iEmitter;
         this.monitorService = monitorService;
         this.hostService = hostService;
     }
@@ -23,7 +23,7 @@ module.exports = class Monitor {
                 host.status = data.status;
                 host.ip = data.ip;
                 let newHost = await this.hostService.updateHostStatus(host);
-                this.eventEmitter.emit('statusChange', newHost);
+                this.iEmitter.emit('statusChange', newHost);
             }
             return 'onVerify';
         } catch (err) {
