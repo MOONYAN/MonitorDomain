@@ -1,11 +1,11 @@
 module.exports = class HostService {
-    constructor(proxy) {
-        this.service = proxy;
+    constructor(iHostService) {
+        this.iHostService = iHostService;
     };
 
     async addHost(host) {
         try {
-            return await this.service.addHost(host);
+            return await this.iHostService.addHost(host);
         } catch (err) {
             throw err;
         }
@@ -13,7 +13,7 @@ module.exports = class HostService {
 
     async updateHostCommand(host) {
         try {
-            return await this.service.updateHostCommand(host);
+            return await this.iHostService.updateHostCommand(host);
         } catch (err) {
             throw err;
         }
@@ -21,7 +21,7 @@ module.exports = class HostService {
 
     async updateHostStatus(host) {
         try {
-            return await this.service.updateHostStatus(host);
+            return await this.iHostService.updateHostStatus(host);
         } catch (err) {
             throw err;
         }
@@ -29,7 +29,7 @@ module.exports = class HostService {
 
     async attachContact(host, contact) {
         try {
-            return await this.service.attachContact(host, contact);
+            return await this.iHostService.attachContact(host, contact);
         } catch (err) {
             throw err;
         }
@@ -37,7 +37,7 @@ module.exports = class HostService {
 
     async getHosts() {
         try {
-            return await this.service.getHosts();
+            return await this.iHostService.getHosts();
         } catch (err) {
             throw err;
         }
@@ -45,7 +45,7 @@ module.exports = class HostService {
 
     async findHost(key) {
         try {
-            return await this.service.findHost();
+            return await this.iHostService.findHost();
         } catch (err) {
             throw err;
         }
