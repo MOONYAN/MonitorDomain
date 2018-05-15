@@ -1,7 +1,7 @@
 module.exports = class Monitor {
-    constructor(iEmitter, monitorService, hostService) {
+    constructor(iEmitter, iMonitorService, hostService) {
         this.iEmitter = iEmitter;
-        this.monitorService = monitorService;
+        this.iMonitorService = iMonitorService;
         this.hostService = hostService;
     }
 
@@ -9,7 +9,7 @@ module.exports = class Monitor {
         try {
             let hosts = await this.hostService.getHosts();
             hosts.forEach(async element => {
-                this.verify(element, await this.monitorService.queryHost(element));
+                this.verify(element, await this.iMonitorService.queryHost(element));
             });
             return 'onInspectedHosts';
         } catch (err) {
