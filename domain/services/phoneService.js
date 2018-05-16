@@ -2,9 +2,9 @@ module.exports = {
     /**
      * 
      * @param {string} Phone 
-     * @param {*} message 
+     * @param {{name:string, status:string}} messageDTO 
      */
-    send(Phone, message) {
-        console.log(`Send Phone ${Phone} ->`, message);
+    send(Phone, messageDTO) {
+        console.log(`Send Phone ${Phone} ->`, messageDTO);
     }
 }

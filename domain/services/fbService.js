@@ -2,9 +2,9 @@ module.exports = {
     /**
      * 
      * @param {string} FB 
-     * @param {*} message 
+     * @param {{name:string, status:string}} messageDTO 
      */
-    send(FB, message) {
-        console.log(`Send FB ${FB} ->`, message);
+    send(FB, messageDTO) {
+        console.log(`Send FB ${FB} ->`, messageDTO);
     }
 }
