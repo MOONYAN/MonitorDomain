@@ -1,15 +1,15 @@
-var senders = {};
+var iSenders = {};
 
 module.exports = {
 
-    use(key, sender) {
-        senders[key] = sender;
+    use(key, iSender) {
+        iSenders[key] = iSender;
     },
 
     notify({address}, message) {
         for (let key in address) {
-            if (senders[key]) {
-                senders[key].send(address[key], message);
+            if (iSenders[key]) {
+                iSenders[key].send(address[key], message);
             }
         }
     }
