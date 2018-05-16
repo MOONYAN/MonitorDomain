@@ -1,29 +1,34 @@
 module.exports = class Monitor {
-    constructor(eventEmitter, monitorService, hostService) {
-        this.eventEmitter = eventEmitter;
-        this.monitorService = monitorService;
-        this.hostService = hostService;
+    constructor(iEmitter, iMonitorService, iHostService) {
+        this.iEmitter = iEmitter;
+        this.iMonitorService = iMonitorService;
+        this.iHostService = iHostService;
     }
 
     async inspectHosts() {
         try {
-            let hosts = await this.hostService.getHosts();
+            let hosts = await this.iHostService.getHosts();
             hosts.forEach(async element => {
-                this.verify(element, await this.monitorService.queryHost(element));
+                let inspectDTO = await this.iMonitorService.queryHost(element);
+                this.verify(element, inspectDTO);
             });
             return 'onInspectedHosts';
         } catch (err) {
             throw err;
         }
     }
-
-    async verify(host, data) {
+    /**
+     * 
+     * @param {*} host 
+     * @param {{status:string, ip:string, name:string}} inspectDTO 
+     */
+    async verify(host, inspectDTO) {
         try {
-            if (host.status != data.status) {
-                host.status = data.status;
-                host.ip = data.ip;
-                let newHost = await this.hostService.updateHostStatus(host);
-                this.eventEmitter.emit('statusChange', newHost);
+            if (host.status != inspectDTO.status) {
+                host.status = inspectDTO.status;
+                host.ip = inspectDTO.ip;
+                let newHost = await this.iHostService.updateHostStatus(host);
+                this.iEmitter.emit('statusChange', newHost);
             }
             return 'onVerify';
         } catch (err) {

@@ -1,13 +1,17 @@
 module.exports = class Timer {
 
-    constructor(eventEmitter) {
-        this.eventEmitter = eventEmitter;
+    constructor(iEmitter) {
+        this.iEmitter = iEmitter;
         this.intervalRef = null;
     }
 
+    /**
+     * 
+     * @param {number} interval 
+     */
     start(interval) {
         this.intervalRef = setInterval(_ => {
-            this.eventEmitter.emit('timeout');
+            this.iEmitter.emit('timeout');
         }, interval);
     }
 

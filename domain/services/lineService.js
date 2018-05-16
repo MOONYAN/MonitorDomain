@@ -1,5 +1,10 @@
 module.exports = {
-    send(Line, message) {
-        console.log(`Send Line ${Line} ->`, message);
+    /**
+     * 
+     * @param {string} Line 
+     * @param {{name:string, status:string}} messageDTO  
+     */
+    send(Line, messageDTO) {
+        console.log(`Send Line ${Line} ->`, messageDTO);
     }
 }

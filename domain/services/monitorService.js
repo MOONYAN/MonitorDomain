@@ -1,16 +1,24 @@
 'use strict';
 
-var services = {};
+var iInspectors = {};
 
 module.exports = {
-    use(key, service) {
-        services[key] = service;
+    /**
+     * 
+     * @param {string} key 
+     * @param {*} iInspector 
+     */
+    use(key, iInspector) {
+        iInspectors[key] = iInspector;
     },
-
+    /**
+     * 
+     * @param {{command:string,name:string}} host 
+     */
     async queryHost(host) {
         try {
-            if (host.command && services[host.command]) {
-                return await services[host.command].queryHost(host);
+            if (host.command && iInspectors[host.command]) {
+                return await iInspectors[host.command].queryHost(host);
             }
             return 'unvalid command';
         } catch (err) {

@@ -5,6 +5,14 @@ const EventEmitter = require('events');
 
 describe('HostEventHadler', _ => {
     it('should handle host event', done => {
+        let messageDTOMaker = {
+            make(host) {
+                return {
+                    name: host.name,
+                    status: host.status
+                }
+            }
+        };
         let emitter = new EventEmitter();
         let notifyService = {
             notify(contact, subject) {
@@ -14,17 +22,17 @@ describe('HostEventHadler', _ => {
                 done();
             }
         };
-        let handler = new HostEventHadler(emitter, notifyService);
+        let handler = new HostEventHadler(emitter, notifyService, messageDTOMaker);
         let host = {
-            name:'Latte',
-            status:'UP',
+            name: 'Latte',
+            status: 'UP',
             contacts: [{
                 address: {
                     Email: 'trump@gmail.com',
                     Phone: '0800-092-000'
                 }
-            }] 
+            }]
         }
-        emitter.emit('statusChange',host);
+        emitter.emit('statusChange', host);
     });
 });

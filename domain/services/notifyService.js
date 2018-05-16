@@ -1,15 +1,25 @@
-var senders = {};
+var iSenders = {};
 
 module.exports = {
 
-    use(key, sender) {
-        senders[key] = sender;
+    /**
+     * 
+     * @param {string} key 
+     * @param {*} iSender 
+     */
+    use(key, iSender) {
+        iSenders[key] = iSender;
     },
 
-    notify({address}, message) {
-        for (let key in address) {
-            if (senders[key]) {
-                senders[key].send(address[key], message);
+    /**
+     * 
+     * @param {{address:{Email:string, Line:string, FB:string, Phone:string}}} receiver 
+     * @param {{name:string, status:string}} messageDTO 
+     */
+    notify(receiver, messageDTO) {
+        for (let key in receiver.address) {
+            if (iSenders[key]) {
+                iSenders[key].send(receiver.address[key], messageDTO);
             }
         }
     }

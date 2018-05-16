@@ -1,5 +1,10 @@
 module.exports = {
-    send(Email, message) {
-        console.log(`Send Email ${Email} ->`, message);
+    /**
+     * 
+     * @param {string} Email 
+     * @param {{name:string, status:string}} messageDTO 
+     */
+    send(Email, messageDTO) {
+        console.log(`Send Email ${Email} ->`, messageDTO);
     }
 }
