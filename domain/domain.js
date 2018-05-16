@@ -26,11 +26,14 @@ eventEmitter.on('timeout', _ => {
     monitor.inspectHosts();
 });
 
+const hostDTOMaker = require('./hostDTOMaker');
+
 module.exports = {
 
     async getHosts() {
         try {
-            return await hostService.getHosts();
+            let hosts = await hostService.getHosts();
+            return hosts.map(host => hostDTOMaker.make(host));
         } catch (err) {
             throw err;
         }
@@ -38,7 +41,7 @@ module.exports = {
 
     async findHost(key) {
         try {
-            return await hostService.findHost(key);
+            return hostDTOMaker.make(await hostService.findHost(key));
         } catch (err) {
             throw err;
         }
@@ -46,7 +49,7 @@ module.exports = {
 
     async updateHostCommand(host) {
         try {
-            return await hostService.updateHostCommand(host);
+            return hostDTOMaker.make(await hostService.updateHostCommand(host));
         } catch (err) {
             throw err;
         }

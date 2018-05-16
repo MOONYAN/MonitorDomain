@@ -45,7 +45,7 @@ module.exports = class HostService {
 
     async findHost(key) {
         try {
-            return await this.iHostService.findHost();
+            return await this.iHostService.findHost(key);
         } catch (err) {
             throw err;
         }
