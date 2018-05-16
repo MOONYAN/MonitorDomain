@@ -13,7 +13,7 @@ notifyService.use('FB', require('./services/fbService'));
 notifyService.use('Phone', require('./services/phoneService'));
 
 let eventEmitter = new EventEmitter();
-let hostEventHandler = new HostEventHandler(eventEmitter, notifyService);
+let hostEventHandler = new HostEventHandler(eventEmitter, notifyService, require('./messageDTOMaker'));
 let timer = new Timer(eventEmitter);
 timer.start(3000);
 

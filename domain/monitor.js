@@ -9,7 +9,8 @@ module.exports = class Monitor {
         try {
             let hosts = await this.iHostService.getHosts();
             hosts.forEach(async element => {
-                this.verify(element, await this.iMonitorService.queryHost(element));
+                let inspectDTO = await this.iMonitorService.queryHost(element);
+                this.verify(element, inspectDTO);
             });
             return 'onInspectedHosts';
         } catch (err) {
@@ -19,13 +20,13 @@ module.exports = class Monitor {
     /**
      * 
      * @param {*} host 
-     * @param {{status:string, ip:string, name:string}} data 
+     * @param {{status:string, ip:string, name:string}} inspectDTO 
      */
-    async verify(host, data) {
+    async verify(host, inspectDTO) {
         try {
-            if (host.status != data.status) {
-                host.status = data.status;
-                host.ip = data.ip;
+            if (host.status != inspectDTO.status) {
+                host.status = inspectDTO.status;
+                host.ip = inspectDTO.ip;
                 let newHost = await this.iHostService.updateHostStatus(host);
                 this.iEmitter.emit('statusChange', newHost);
             }
