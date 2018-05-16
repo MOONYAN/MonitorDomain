@@ -26,6 +26,8 @@ eventEmitter.on('timeout', _ => {
     monitor.inspectHosts();
 });
 
+const hostDTOMaker = require('./hostDTOMaker');
+
 module.exports = {
 
     async getHosts() {
