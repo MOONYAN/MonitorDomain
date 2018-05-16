@@ -18,17 +18,21 @@ module.exports = {
             let quickscan = new nmap.QuickScan(address);
 
             quickscan.on('complete', function (data) {
-                resolve({
+                let inspectDTO = {
                     name: (data.length == 0) ? "" : data[0].hostname,
                     ip: (data.length == 0) ? "" : data[0].ip,
                     status: (data.length == 1) ? "UP" : "DOWN"
-                });
+                };
+                resolve(inspectDTO);
             });
 
             quickscan.on('error', function (error) {
-                resolve({
+                let inspectDTO = {
+                    name: address,
+                    ip: '',
                     status: 'UNKNOWN'
-                });
+                };
+                resolve(inspectDTO);
             });
             quickscan.startScan();
         });
