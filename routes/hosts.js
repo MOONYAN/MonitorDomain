@@ -21,9 +21,9 @@ router.get('/:id', async function (req, res) {
 
 router.put('/:id', async function (req, res) {
     try {
-         let host = await domain.findHost(req.params.id);
-         host.command = req.body.command;        
-        return res.json(await domain.updateHostCommand(host));
+         let hostDTO = await domain.findHost(req.params.id);
+         hostDTO.command = req.body.command;        
+        return res.json(await domain.updateHostCommand(hostDTO));
     } catch (err) {
         return res.json(err);
     }
