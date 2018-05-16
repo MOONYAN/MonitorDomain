@@ -13,13 +13,13 @@ module.exports = {
 
     /**
      * 
-     * @param {{address:{Email:string, Line:string, FB:string, Phone:string}}} reveiver 
-     * @param {*} message 
+     * @param {{address:{Email:string, Line:string, FB:string, Phone:string}}} receiver 
+     * @param {{name:string, status:string}} messageDTO 
      */
-    notify(reveiver, message) {
-        for (let key in reveiver.address) {
+    notify(receiver, messageDTO) {
+        for (let key in receiver.address) {
             if (iSenders[key]) {
-                iSenders[key].send(reveiver.address[key], message);
+                iSenders[key].send(receiver.address[key], messageDTO);
             }
         }
     }
