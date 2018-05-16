@@ -3,6 +3,10 @@
 var nmap = require('node-nmap');
 
 module.exports = {
+    /**
+     * 
+     * @param {{name:string}} host 
+     */
     queryHost(host) {
         return new Promise((resolve, reject) => {
             let address = host.name;

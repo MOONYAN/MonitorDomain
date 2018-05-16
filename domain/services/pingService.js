@@ -1,6 +1,10 @@
 var ping = require('ping');
 
 module.exports = {
+    /**
+     * 
+     * @param {{name:string}} host 
+     */
     queryHost(host) {
         return new Promise((resolve, reject) => {
             let address = host.name;
