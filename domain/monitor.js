@@ -16,7 +16,11 @@ module.exports = class Monitor {
             throw err;
         }
     }
-
+    /**
+     * 
+     * @param {*} host 
+     * @param {{status:string, ip:string, name:string}} data 
+     */
     async verify(host, data) {
         try {
             if (host.status != data.status) {
