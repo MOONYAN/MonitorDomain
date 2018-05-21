@@ -23,7 +23,7 @@ describe('Monitor', _ => {
             host.should.have.property('status');
             done();
         });
-        let hostService = {
+        let hostRepository = {
             async getHosts() {
                 return [{
                     name: 'trump',
@@ -34,7 +34,7 @@ describe('Monitor', _ => {
                 return host;
             }
         }
-        let monitor = new Monitor(emitter, monitorService, hostService);
+        let monitor = new Monitor(emitter, monitorService, hostRepository);
         monitor.inspectHosts();
     });
 });
