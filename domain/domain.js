@@ -1,7 +1,7 @@
-const Monitor = require('./monitor');
-const HostEventHandler = require('./hostEventHandler');
-const EventEmitter = require('./eventEmitter');
-const Timer = require('./timer');
+const Monitor = require('./useCases/monitor');
+const HostEventHandler = require('./useCases/hostEventHandler');
+const EventEmitter = require('./entities/eventEmitter');
+const Timer = require('./entities/timer');
 
 const hostRepository = require('./repositories/mongoose/mongoHostRepository');
 
@@ -12,7 +12,7 @@ notifyService.use('FB', require('./services/fbService'));
 notifyService.use('Phone', require('./services/phoneService'));
 
 let eventEmitter = new EventEmitter();
-let hostEventHandler = new HostEventHandler(eventEmitter, notifyService, require('./messageDTOMaker'));
+let hostEventHandler = new HostEventHandler(eventEmitter, notifyService, require('./useCases/messageDTOMaker'));
 let timer = new Timer(eventEmitter);
 timer.start(3000);
 
@@ -25,7 +25,7 @@ eventEmitter.on('timeout', _ => {
     monitor.inspectHosts();
 });
 
-const hostDTOMaker = require('./hostDTOMaker');
+const hostDTOMaker = require('./useCases/hostDTOMaker');
 
 module.exports = {
 
