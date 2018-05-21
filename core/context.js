@@ -28,29 +28,7 @@ eventEmitter.on('timeout', _ => {
 const hostDTOMaker = require('./useCases/hostDTOMaker');
 
 module.exports = {
-
-    async getHosts() {
-        try {
-            let hosts = await hostRepository.getHosts();
-            return hosts.map(host => hostDTOMaker.make(host));
-        } catch (err) {
-            throw err;
-        }
-    },
-
-    async findHost(key) {
-        try {
-            return hostDTOMaker.make(await hostRepository.findHost(key));
-        } catch (err) {
-            throw err;
-        }
-    },
-
-    async updateHostCommand(host) {
-        try {
-            return hostDTOMaker.make(await hostRepository.updateHostCommand(host));
-        } catch (err) {
-            throw err;
-        }
-    }
+    getHosts: require('./useCases/getHostsUseCase').setup(hostRepository, hostDTOMaker),
+    findHost: require('./useCases/findHostUseCase').setup(hostRepository, hostDTOMaker),
+    updateHostCommand: require('./useCases/updateHostCommand').setup(hostRepository, hostDTOMaker)
 };
