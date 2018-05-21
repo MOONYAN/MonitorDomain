@@ -1,10 +1,9 @@
-const HostService = require('./services/hostService');
 const Monitor = require('./monitor');
 const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
 const Timer = require('./timer');
 
-let hostService = new HostService(require('./services/mongoHostService'));
+const hostRepository = require('./repositories/mongoHostRepository');
 
 const notifyService = require('./services/notifyService');
 notifyService.use('Email', require('./services/mailService'));
@@ -21,7 +20,7 @@ const monitorService = require('./services/monitorService');
 monitorService.use('nmap', require('./services/nmapService'));
 monitorService.use('ping', require('./services/nmapService'));
 
-let monitor = new Monitor(eventEmitter, monitorService, hostService);
+let monitor = new Monitor(eventEmitter, monitorService, hostRepository);
 eventEmitter.on('timeout', _ => {
     monitor.inspectHosts();
 });
@@ -32,7 +31,7 @@ module.exports = {
 
     async getHosts() {
         try {
-            let hosts = await hostService.getHosts();
+            let hosts = await hostRepository.getHosts();
             return hosts.map(host => hostDTOMaker.make(host));
         } catch (err) {
             throw err;
@@ -41,7 +40,7 @@ module.exports = {
 
     async findHost(key) {
         try {
-            return hostDTOMaker.make(await hostService.findHost(key));
+            return hostDTOMaker.make(await hostRepository.findHost(key));
         } catch (err) {
             throw err;
         }
@@ -49,7 +48,7 @@ module.exports = {
 
     async updateHostCommand(host) {
         try {
-            return hostDTOMaker.make(await hostService.updateHostCommand(host));
+            return hostDTOMaker.make(await hostRepository.updateHostCommand(host));
         } catch (err) {
             throw err;
         }
