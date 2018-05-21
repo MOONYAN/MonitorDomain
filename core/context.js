@@ -30,5 +30,5 @@ const hostDTOMaker = require('./useCases/hostDTOMaker');
 module.exports = {
     getHosts: require('./useCases/getHostsUseCase').setup(hostRepository, hostDTOMaker),
     findHost: require('./useCases/findHostUseCase').setup(hostRepository, hostDTOMaker),
-    updateHostCommand: require('./useCases/updateHostCommand').setup(hostRepository, hostDTOMaker)
+    updateHostCommand: require('./useCases/updateHostCommandUseCase').setup(hostRepository, hostDTOMaker)
 };
