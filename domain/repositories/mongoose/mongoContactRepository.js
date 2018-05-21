@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var connection = mongoose.connect('mongodb://Sasuke:9487@ds033126.mlab.com:33126/narutomongo');
 
 var ContactSchema = require('./Schemas/contactSchema');
-var Contact = require('../../contact');
+var Contact = require('../../entities/contact');
 
 var self = {};
 
