@@ -16,7 +16,7 @@ let hostEventHandler = new HostEventHandler(eventEmitter, notifyService, require
 let timer = new Timer(eventEmitter);
 timer.start(3000);
 
-const monitorService = require('./services/monitorService');
+const monitorService = require('./entities/monitorService');
 monitorService.use('nmap', require('./services/nmapService'));
 monitorService.use('ping', require('./services/nmapService'));
 
