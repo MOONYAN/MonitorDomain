@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var domain = require('../core/context');
+var context = require('../core/context');
 
 /* GET users listing. */
 router.get('/', async function (req, res) {
     try {
-        return res.json(await domain.getHosts());
+        return res.json(await context.getHosts());
     } catch (err) {
         return res.json(err);
     }
@@ -13,7 +13,7 @@ router.get('/', async function (req, res) {
 
 router.get('/:id', async function (req, res) {
     try {
-        return res.json(await domain.findHost(req.params.id));
+        return res.json(await context.findHost(req.params.id));
     } catch (err) {
         return res.json(err);
     }
@@ -21,9 +21,9 @@ router.get('/:id', async function (req, res) {
 
 router.put('/:id', async function (req, res) {
     try {
-         let hostDTO = await domain.findHost(req.params.id);
+         let hostDTO = await context.findHost(req.params.id);
          hostDTO.command = req.body.command;        
-        return res.json(await domain.updateHostCommand(hostDTO));
+        return res.json(await context.updateHostCommand(hostDTO));
     } catch (err) {
         return res.json(err);
     }
