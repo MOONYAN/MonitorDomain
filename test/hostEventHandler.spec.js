@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
-const HostEventHadler = require('../domain/useCases/hostEventHandler');
+const HostEventHadler = require('../core/useCases/hostEventHandler');
 const EventEmitter = require('events');
 
 describe('HostEventHadler', _ => {

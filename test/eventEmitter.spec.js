@@ -1,7 +1,7 @@
 const chai = require("chai");
 chai.use(require("chai-events"));
 const should = chai.should();
-const EventEmitter = require("../domain/entities/eventEmitter");
+const EventEmitter = require("../core/entities/eventEmitter");
 
 describe("Event Emitting", function () {
 

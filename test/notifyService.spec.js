@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
-const notifyService = require('../domain/entities/notifyService');
+const notifyService = require('../core/entities/notifyService');
 
 
 describe('NotifyService', _ => {

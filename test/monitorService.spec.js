@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
-const monitorService = require('../domain/entities/monitorService');
+const monitorService = require('../core/entities/monitorService');
 
 describe('MonitorService', _ => {
     it('should query host', done => {

@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
-const Timer = require('../domain/entities/timer');
+const Timer = require('../core/entities/timer');
 const EventEmitter = require('events');
 
 describe('Timer', _ => {
