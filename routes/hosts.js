@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var domain = require('../core/domain');
+var domain = require('../core/context');
 
 /* GET users listing. */
 router.get('/', async function (req, res) {

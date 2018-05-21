@@ -6,7 +6,7 @@ var cors = require('cors');
 
 var hosts = require('./routes/hosts');
 
-var domain = require('./core/domain');
+var domain = require('./core/context');
 var app = express();
 
 app.use(cors());
