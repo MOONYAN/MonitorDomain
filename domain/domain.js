@@ -1,5 +1,5 @@
 const Monitor = require('./monitor');
-const HostEventHandler = require('./hostEventHandler');
+const HostEventHandler = require('./useCases/hostEventHandler');
 const EventEmitter = require('./entities/eventEmitter');
 const Timer = require('./entities/timer');
 
