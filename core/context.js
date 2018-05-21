@@ -5,7 +5,7 @@ const Timer = require('./entities/timer');
 
 const hostRepository = require('./repositories/mongoose/mongoHostRepository');
 
-const notifyService = require('./services/notifyService');
+const notifyService = require('./entities/notifyService');
 notifyService.use('Email', require('./services/mailService'));
 notifyService.use('Line', require('./services/lineService'));
 notifyService.use('FB', require('./services/fbService'));
@@ -16,7 +16,7 @@ let hostEventHandler = new HostEventHandler(eventEmitter, notifyService, require
 let timer = new Timer(eventEmitter);
 timer.start(3000);
 
-const monitorService = require('./services/monitorService');
+const monitorService = require('./entities/monitorService');
 monitorService.use('nmap', require('./services/nmapService'));
 monitorService.use('ping', require('./services/nmapService'));
 

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const should = chai.should();
 chai.use(require('chai-events'));
-const Monitor = require('../domain/useCases/monitor');
+const Monitor = require('../core/useCases/monitor');
 const eventEmitter = require('events');
 
 const monitorService = {
