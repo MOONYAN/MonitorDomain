@@ -3,7 +3,7 @@ const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
 const Timer = require('./timer');
 
-const hostRepository = require('./repositories/mongoHostRepository');
+const hostRepository = require('./repositories/mongoose/mongoHostRepository');
 
 const notifyService = require('./services/notifyService');
 notifyService.use('Email', require('./services/mailService'));
