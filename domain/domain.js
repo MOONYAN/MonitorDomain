@@ -1,7 +1,7 @@
 const Monitor = require('./monitor');
 const HostEventHandler = require('./hostEventHandler');
 const EventEmitter = require('./eventEmitter');
-const Timer = require('./timer');
+const Timer = require('./entities/timer');
 
 const hostRepository = require('./repositories/mongoose/mongoHostRepository');
 
