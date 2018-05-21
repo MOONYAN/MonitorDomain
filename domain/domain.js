@@ -5,7 +5,7 @@ const Timer = require('./entities/timer');
 
 const hostRepository = require('./repositories/mongoose/mongoHostRepository');
 
-const notifyService = require('./services/notifyService');
+const notifyService = require('./entities/notifyService');
 notifyService.use('Email', require('./services/mailService'));
 notifyService.use('Line', require('./services/lineService'));
 notifyService.use('FB', require('./services/fbService'));
