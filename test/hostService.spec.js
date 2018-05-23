@@ -1,10 +1,9 @@
 const chai = require('chai');
 const should = chai.should();
-const HostService = require('../domain/services/hostService');
 
-describe('HostService', _ => {
+describe('hostRepository', _ => {
     it('should add host', done => {
-        let hostService = new HostService({
+        let hostRepository = {
             async addHost(host) {
                 return {
                     id: '9487',
@@ -15,9 +14,9 @@ describe('HostService', _ => {
                     contact: []
                 }
             }
-        });
+        };
 
-        hostService.addHost({
+        hostRepository.addHost({
             name: 'google.com',
             command: 'Yee'
         }).then((newHost) => {
@@ -34,8 +33,11 @@ describe('HostService', _ => {
     })
 
     it('should update host command', done => {
-        let hostService = new HostService({
-            async updateHostCommand({id,command}) {
+        let hostRepository = {
+            async updateHostCommand({
+                id,
+                command
+            }) {
                 return {
                     id: id,
                     name: 'Trump',
@@ -45,10 +47,10 @@ describe('HostService', _ => {
                     contact: []
                 }
             }
-        });
+        };
 
-        hostService.updateHostCommand({
-            id:'9487',
+        hostRepository.updateHostCommand({
+            id: '9487',
             command: 'Yee'
         }).then((newHost) => {
             newHost.should.have.property('id');
@@ -64,8 +66,12 @@ describe('HostService', _ => {
     })
 
     it('should update host status', done => {
-        let hostService = new HostService({
-            async updateHostStatus({id,ip,status}) {
+        let hostRepository = {
+            async updateHostStatus({
+                id,
+                ip,
+                status
+            }) {
                 return {
                     id: id,
                     name: 'Trump',
@@ -75,11 +81,11 @@ describe('HostService', _ => {
                     contact: []
                 }
             }
-        });
+        };
 
-        hostService.updateHostStatus({
-            id:'9487',
-            ip:'0.0.0.0',
+        hostRepository.updateHostStatus({
+            id: '9487',
+            ip: '0.0.0.0',
             status: 'Yee'
         }).then((newHost) => {
             newHost.should.have.property('id');
@@ -95,8 +101,10 @@ describe('HostService', _ => {
     })
 
     it('should attach contact', done => {
-        let hostService = new HostService({
-            async attachContact({id},contact) {
+        let hostRepository = {
+            async attachContact({
+                id
+            }, contact) {
                 return {
                     id: id,
                     name: 'Trump',
@@ -106,12 +114,12 @@ describe('HostService', _ => {
                     contacts: [contact]
                 }
             }
-        });
+        };
 
-        hostService.attachContact({
-            id:'9487',
-            contacts:{
-                id:'007'
+        hostRepository.attachContact({
+            id: '9487',
+            contacts: {
+                id: '007'
             }
         }).then((newHost) => {
             newHost.should.have.property('id');

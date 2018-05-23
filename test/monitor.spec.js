@@ -1,7 +1,7 @@
 const chai = require('chai');
 const should = chai.should();
 chai.use(require('chai-events'));
-const Monitor = require('../domain/monitor');
+const Monitor = require('../core/useCases/monitor');
 const eventEmitter = require('events');
 
 const monitorService = {
@@ -23,7 +23,7 @@ describe('Monitor', _ => {
             host.should.have.property('status');
             done();
         });
-        let hostService = {
+        let hostRepository = {
             async getHosts() {
                 return [{
                     name: 'trump',
@@ -34,7 +34,7 @@ describe('Monitor', _ => {
                 return host;
             }
         }
-        let monitor = new Monitor(emitter, monitorService, hostService);
+        let monitor = new Monitor(emitter, monitorService, hostRepository);
         monitor.inspectHosts();
     });
 });

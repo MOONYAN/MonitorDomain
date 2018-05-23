@@ -1,13 +1,13 @@
 module.exports = class Monitor {
-    constructor(iEmitter, iMonitorService, iHostService) {
+    constructor(iEmitter, iMonitorService, iHostRepository) {
         this.iEmitter = iEmitter;
         this.iMonitorService = iMonitorService;
-        this.iHostService = iHostService;
+        this.iHostRepository = iHostRepository;
     }
 
     async inspectHosts() {
         try {
-            let hosts = await this.iHostService.getHosts();
+            let hosts = await this.iHostRepository.getHosts();
             hosts.forEach(async element => {
                 let inspectDTO = await this.iMonitorService.queryHost(element);
                 this.verify(element, inspectDTO);
@@ -27,7 +27,7 @@ module.exports = class Monitor {
             if (host.status != inspectDTO.status) {
                 host.status = inspectDTO.status;
                 host.ip = inspectDTO.ip;
-                let newHost = await this.iHostService.updateHostStatus(host);
+                let newHost = await this.iHostRepository.updateHostStatus(host);
                 this.iEmitter.emit('statusChange', newHost);
             }
             return 'onVerify';
